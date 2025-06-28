@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AdminLayout from "./ui/AdminLayout";
 import Dashboard from "./pages/Dashboard";
 import TripsPage from "./pages/TripsPage";
@@ -8,13 +10,25 @@ import Trips from "./pages/Trips";
 import ClientLayout from "./ui/ClientLayout";
 import Payment from "./pages/Payment";
 import Login from "./pages/Login";
+import { clientLoader } from "./features/Auth/LoginForm";
+import AuthCallback from "./features/Auth/AuthCallback";
 const router = createBrowserRouter([
+  {
+    path: "auth-callback",
+    element: <AuthCallback />,
+  },
+  {
+    index: true,
+    path: "/login",
+    element: <Login />,
+    loader: clientLoader,
+  },
   {
     path: "/admin",
     element: <AdminLayout />,
     children: [
       {
-        index: true,
+        path: "dashboard",
         element: <Dashboard />,
       },
       {
@@ -32,7 +46,7 @@ const router = createBrowserRouter([
     element: <ClientLayout />,
     children: [
       {
-        index: true,
+        path: "tripspage",
         element: <TripsPage />,
       },
       {
@@ -41,14 +55,17 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "login",
-    element: <Login />,
-  },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

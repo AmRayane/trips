@@ -1,33 +1,51 @@
 import { FaHome, FaMap } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router"; // <-- ajouté
 
 export default function MenuMedium() {
   const navigate = useNavigate();
+  const location = useLocation(); // <-- ajouté
+
+  // Fonction pour vérifier si le lien est actif
+  const isActive = (path: string) => location.pathname === path;
+
+  // Classes de base pour tous les boutons
+  const baseClasses = "w-full flex gap-3 items-center px-4 py-3 rounded-lg";
+
+  // Classes conditionnelles
+  const activeClasses = "bg-primary-100 text-white";
+  const inactiveClasses = "text-gray-100 hover:bg-primary-100 hover:text-white";
+
   return (
-    <div className="hidden  md:w-[100%] md:pt-4 md:flex md:flex-col md:gap-4">
-      <div className="w-[100%]">
+    <div className="hidden md:w-full md:pt-4 md:flex md:flex-col md:gap-4">
+      <div className="w-full">
         <button
-          onClick={() => navigate("/admin")}
-          className=" w-[100%] flex gap-3  text-light-50  items-center px-4  py-3 rounded-lg text-gray-100 active:bg-primary-100 active:text-white hover:text-white hover:bg-primary-100"
+          onClick={() => navigate("/admin/dashboard")}
+          className={`${baseClasses} ${
+            isActive("/admin") ? activeClasses : inactiveClasses
+          }`}
         >
           <FaHome />
           Dashboard
         </button>
-      </div>{" "}
-      <div className="w-[100%]">
+      </div>
+      <div className="w-full">
         <button
           onClick={() => navigate("/admin/users")}
-          className=" w-[100%] flex gap-3 items-center  text-light-50  px-4  py-3 rounded-lg text-gray-100 active:bg-primary-100 active:text-white hover:text-white hover:bg-primary-100"
+          className={`${baseClasses} ${
+            isActive("/admin/users") ? activeClasses : inactiveClasses
+          }`}
         >
           <FaUserGroup />
           All Users
         </button>
-      </div>{" "}
-      <div className="w-[100%]">
+      </div>
+      <div className="w-full">
         <button
           onClick={() => navigate("/admin/trips")}
-          className=" w-[100%] flex gap-3  text-light-50 items-center  px-4  py-3 rounded-lg text-gray-100 active:bg-primary-100 active:text-white hover:text-white hover:bg-primary-100"
+          className={`${baseClasses} ${
+            isActive("/admin/trips") ? activeClasses : inactiveClasses
+          }`}
         >
           <FaMap />
           AI Trips

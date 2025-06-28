@@ -6,9 +6,10 @@ import User from "../ui/User";
 
 export default function Dashboard() {
   return (
-    <div className="px-8 pt-5 bg-light-300 min-h-[calc(100vh-74px)] ">
+    <div className="px-8 pt-5 pb-10 bg-light-300 min-h-[calc(100vh-74px)] ">
       <User
         title="Welcome user"
+        buttonDescription="Add new trips"
         description="Track activity, trends, and popular destinations in real time"
       />
       <DashboardAreaChart />

@@ -1,61 +1,38 @@
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { Area, AreaChart, ResponsiveContainer } from "recharts";
-
+import { dashboardStats } from "../../../data";
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    lastMonth: "1",
+    numberofusers: dashboardStats.usersJoined.lastMonth,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    currentMonth: "2",
+    numberofusers: dashboardStats.usersJoined.currentMonth,
   },
 ];
+
 export default function UserGrowthChart() {
+  const increasing = data[0].numberofusers < data[1].numberofusers;
+  const percentage = Math.round(
+    (data[0].numberofusers / data[1].numberofusers) * 100
+  );
   return (
     <div className="bg-white p-5 rounded-xl flex flex-col gap-6">
       <h2 className="text-dark-100 font-medium ]">Total Users</h2>
       <div className="flex">
         <div className="flex-1">
-          <h2 className="text-4xl font-semibold mb-3">12,450</h2>
+          <h2 className="text-4xl font-semibold mb-3">
+            {dashboardStats.totalUsers}
+          </h2>
           <div className="flex gap-2 ">
-            <p className="flex items-center gap-1 text-success-500">
-              <FaArrowUp />
-              12%{" "}
+            <p
+              className={`flex items-center gap-1 ${
+                increasing ? "text-success-500" : "text-red-100"
+              }`}
+            >
+              {increasing ? <FaArrowUp /> : <FaArrowDown />}
+              {percentage}%
             </p>
             <p className="text-gray-100"> vs last month</p>
           </div>
@@ -65,9 +42,9 @@ export default function UserGrowthChart() {
             <AreaChart data={data}>
               <Area
                 type="monotone"
-                dataKey="uv"
-                fill="#12b76a"
-                stroke="#027a48"
+                dataKey="numberofusers"
+                fill={`${increasing ? "#12b76a" : "#ff543d"}`}
+                stroke={`${increasing ? "#027a48" : "#b93815"}`}
               />
             </AreaChart>
           </ResponsiveContainer>

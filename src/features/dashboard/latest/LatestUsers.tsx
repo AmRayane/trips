@@ -1,4 +1,4 @@
-import { useLatestUsers } from "../../users/UseLatestUsers";
+import { useLatestUsers } from "../UseLatestUsers";
 
 export default function LatestUsers() {
   const { isLoading, data } = useLatestUsers();

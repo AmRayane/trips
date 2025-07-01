@@ -10,8 +10,20 @@ export type User = {
   email: string;
   image: string;
   status: string;
-  joinedAt: string;
-  accountId: string;
+  $createdAt: string;
+  $id: string;
 };
 
-export const MAX_PAGE = 7;
+export type Inputs = {
+  name: string;
+  email: string;
+  image: FileList;
+  status: string;
+};
+
+export type PaginatedUsersResponse = {
+  users: User[];
+  total: number;
+};
+
+export const MAX_PAGE = 6;

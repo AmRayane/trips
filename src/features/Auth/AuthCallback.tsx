@@ -10,7 +10,6 @@ export default function AuthCallback() {
       try {
         const authUser = await account.get();
         const existingUser = await getExitingUser(authUser.$id);
-        console.log(authUser, existingUser);
         if (!existingUser) {
           await storeUserData();
           return navigate("/client");

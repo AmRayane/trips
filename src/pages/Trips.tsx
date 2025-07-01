@@ -1,4 +1,3 @@
-import React from "react";
 import User from "../ui/User";
 
 export default function Trips() {

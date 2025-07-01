@@ -81,7 +81,7 @@ export async function getUser() {
         Query.select([
           "name",
           "email",
-          "imageUrl",
+          "image",
           "status",
           "joinedAt",
           "accountId",
@@ -94,4 +94,8 @@ export async function getUser() {
     console.error("Error fetching user:", error);
     return null;
   }
+}
+
+export async function signUp(email: string, password: string) {
+  await account.createEmailPasswordSession(email, password);
 }

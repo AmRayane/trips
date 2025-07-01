@@ -10,7 +10,6 @@ import Trips from "./pages/Trips";
 import ClientLayout from "./ui/ClientLayout";
 import Payment from "./pages/Payment";
 import Login from "./pages/Login";
-import { clientLoader } from "./features/Auth/LoginForm";
 import AuthCallback from "./features/Auth/AuthCallback";
 const router = createBrowserRouter([
   {
@@ -21,7 +20,6 @@ const router = createBrowserRouter([
     index: true,
     path: "/login",
     element: <Login />,
-    loader: clientLoader,
   },
   {
     path: "/admin",

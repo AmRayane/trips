@@ -1,19 +1,5 @@
-import { redirect } from "react-router";
-import {
-  getExitingUser,
-  loginWithGoogle,
-  storeUserData,
-} from "../../services/apiAuth";
-import { account } from "../../services/appwrite";
+import { loginWithGoogle } from "../../services/apiAuth";
 import Logo from "../../ui/Logo";
-export async function clientLoader() {
-  const user = await account.get();
-  const exiting = await getExitingUser(user.$id);
-  if (!exiting) {
-    storeUserData();
-  }
-  if (exiting?.status === "user") redirect("client");
-}
 
 export default function LoginForm() {
   function handleLogin() {

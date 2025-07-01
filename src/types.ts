@@ -1,9 +1,14 @@
-export type Trip = {
-  tripDetail: string;
-  imageUrls: string;
-  ceratedAt: string;
-  payment_link: string;
-  userId: string;
+export type SimpleTrip = {
+  country: string;
+  numberOfDays: string;
+  name: string;
+  travelStyle: string;
+  budget: string;
+  price: string;
+  image: FileList;
+  location: string;
+  intersets: string;
+  groupType: string;
 };
 export type User = {
   name: string;

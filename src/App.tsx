@@ -6,21 +6,22 @@ import Dashboard from "./pages/Dashboard";
 import TripsPage from "./pages/TripsPage";
 import Users from "./pages/Users";
 import Trips from "./pages/Trips";
-
+import { Toaster } from "react-hot-toast";
 import ClientLayout from "./ui/ClientLayout";
 import Payment from "./pages/Payment";
 import Login from "./pages/Login";
 import AuthCallback from "./features/Auth/AuthCallback";
 const router = createBrowserRouter([
   {
+    index: true,
+    path: "/",
+    element: <Login />,
+  },
+  {
     path: "auth-callback",
     element: <AuthCallback />,
   },
-  {
-    index: true,
-    path: "/login",
-    element: <Login />,
-  },
+
   {
     path: "/admin",
     element: <AdminLayout />,
@@ -60,6 +61,30 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: "#fff",
+            color: "#black",
+          },
+
+          success: {
+            duration: 3000,
+            iconTheme: {
+              primary: "green",
+              secondary: "white",
+            },
+          },
+          error: {
+            duration: 4000,
+            iconTheme: {
+              primary: "red",
+              secondary: "white",
+            },
+          },
+        }}
+      />
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

@@ -3,6 +3,7 @@ import { fomatDate } from "../../utils/fomatDate";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useDeleteUser } from "./useDeleteUser";
 import type { User } from "../../types";
+import toast from "react-hot-toast";
 
 export default function Allusers() {
   const { data, isLoading } = useUsers();
@@ -48,7 +49,30 @@ export default function Allusers() {
           >
             {user.status}
           </p>
-          <button onClick={() => handleDeleteUser(user)}>
+          <button
+            onClick={() =>
+              toast((t) => (
+                <span className="flex gap-2">
+                  <p>Sure want to delete user ?</p>
+                  <button
+                    className="p-2 bg-red-500 text-white rounded-md"
+                    onClick={() => {
+                      handleDeleteUser(user);
+                      toast.dismiss(t.id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="px-2 py-1 bg-gray-600 text-white rounded-md"
+                    onClick={() => toast.dismiss(t.id)}
+                  >
+                    Dismiss
+                  </button>
+                </span>
+              ))
+            }
+          >
             <AiOutlineDelete size={20} color="red" />
           </button>
         </div>

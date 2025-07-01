@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { TiDelete } from "react-icons/ti";
+
 type UserProps = {
   title: string;
   description: string;
   buttonDescription: string;
   handleClick?: () => void;
-  children(props: { handleClose: () => void }): React.ReactNode;
+  children: React.ReactNode;
 };
 export default function User({
   title,
@@ -30,7 +32,10 @@ export default function User({
           }}
         >
           {showForm ? (
-            "cancel"
+            <div className="flex items-center gap-2">
+              <TiDelete size={20} />
+              cancel
+            </div>
           ) : (
             <>
               <img src="/plus.svg" />
@@ -40,8 +45,8 @@ export default function User({
         </button>
       </div>
       {showForm && (
-        <div className="absolute right-0  top-[85px] w-[100%] h-[calc(100%-85px)]  backdrop-blur flex items-center justify-center  ">
-          {children({ handleClose: handleShowForm })}
+        <div className="absolute right-0 z-30 fix  top-[85px] w-[100%] h-[calc(100%-85px)]  backdrop-blur flex items-center justify-center  ">
+          {children}
         </div>
       )}
     </>

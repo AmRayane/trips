@@ -1,19 +1,32 @@
-import { databases, APPWRITE_TRIPS_ID, DATABASE_ID } from "./appwrite";
-import type { Trip } from "../types";
+import {
+  databases,
+  APPWRITE_TRIPS_ID,
+  DATABASE_ID,
+  storage,
+  APPWRITE_BUCKET_ID,
+} from "./appwrite";
+import type { SimpleTrip } from "../types";
+import { ID } from "appwrite";
 
-export async function getTrips(): Promise<Trip[]> {
-  const response = await databases.listDocuments(
-    DATABASE_ID,
-    APPWRITE_TRIPS_ID
+export async function createTrip(trip: SimpleTrip): Promise<void> {
+  const imageFile = trip.image[0];
+  const uploadFile = await storage.createFile(
+    APPWRITE_BUCKET_ID,
+    ID.unique(),
+    imageFile
   );
-  return response.documents as unknown as Trip[];
-}
+  const iamgeURL = storage.getFileView(APPWRITE_BUCKET_ID, uploadFile.$id);
 
-export async function getTrip(id: string): Promise<Trip> {
-  const response = await databases.getDocument(
-    DATABASE_ID,
-    APPWRITE_TRIPS_ID,
-    id
-  );
-  return response as unknown as Trip;
+  await databases.createDocument(DATABASE_ID, APPWRITE_TRIPS_ID, ID.unique(), {
+    country: trip.country,
+    numberOfDays: parseInt(trip.numberOfDays),
+    name: trip.name,
+    travelStyle: trip.travelStyle,
+    intersets: trip.intersets,
+    budget: trip.budget,
+    price: parseInt(trip.price),
+    imageUrl: iamgeURL,
+    location: trip.location,
+    groupType: trip.groupType,
+  });
 }

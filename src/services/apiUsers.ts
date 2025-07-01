@@ -42,7 +42,6 @@ export async function deleteUser($id: string) {
 
 export async function addNewUser(user: Inputs): Promise<void> {
   const imageFile = user.image[0];
-
   const uploadedFile = await storage.createFile(
     APPWRITE_BUCKET_ID,
     ID.unique(),

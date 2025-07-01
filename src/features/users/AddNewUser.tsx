@@ -2,11 +2,7 @@ import { useForm } from "react-hook-form";
 import type { Inputs } from "../../types";
 import { useAddUser } from "./useAddUser";
 
-type AddNewUserProps = {
-  handleClose: () => void;
-};
-
-export default function AddNewUser({ handleClose }: AddNewUserProps) {
+export default function AddNewUser() {
   const { isLoading, addNewUser } = useAddUser();
   const {
     register,
@@ -18,7 +14,6 @@ export default function AddNewUser({ handleClose }: AddNewUserProps) {
     addNewUser(data, {
       onSuccess: () => {
         reset();
-        handleClose();
       },
     });
   }

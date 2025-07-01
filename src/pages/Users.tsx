@@ -14,7 +14,7 @@ export default function Users() {
         buttonDescription="Add new users"
         description="Filter, sort, and access detailed user profiles"
       >
-        {({ handleShowFomr }) => <AddNewUser handleClose={handleShowFomr} />}
+        <AddNewUser />
       </User>
       <div className="rounded-md flex flex-col bg-[#FFFFFF] mt-7">
         <div className="grid grid-cols-[25%_25%_15%_15%_17%_3%] px-5 py-4 text-[#7F7E83] ">

@@ -1,13 +1,18 @@
-import User from "../ui/User";
+import AiTrip from "../features/tirps/AiTrip";
+import GeminiForm from "../features/tirps/GeminiForm";
+import Header from "../ui/Header";
 
 export default function Trips() {
   return (
-    <div className="px-8 pt-5 bg-light-300 min-h-[calc(100vh-74px)] ">
-      <User
+    <div className="min-h-[calc(100vh-74px)] bg-light-300 px-8 pt-5">
+      <Header
         title="Add new Trips"
         description="View and generate AI travel plans"
-      />
-      <div>dashboard</div>
+        buttonDescription="Trip with AI"
+      >
+        <GeminiForm />
+      </Header>
+      <AiTrip />
     </div>
   );
 }

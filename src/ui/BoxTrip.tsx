@@ -5,34 +5,25 @@ type tripType = {
   image: string;
   title: string;
   location: string;
-  proprties?: [];
+  travelStyle?: string;
+  groupeType?: string;
 };
 
-export default function BoxTrip({
-  price,
-  image,
-  title,
-  location,
-  proprties = [],
-}: tripType) {
+export default function BoxTrip({ price, image, title, location }: tripType) {
   return (
-    <div
-      className="relative flex flex-col overflow-hidden rounded-3xl bg-white cursor-pointer
-    "
-    >
-      <div className="absolute top-3 right-6 bg-white py-[2px] font-semibold text-dark-100 px-5 rounded-3xl">
+    <div className="relative flex min-h-[300px] cursor-pointer flex-col overflow-hidden rounded-3xl bg-white">
+      <div className="absolute right-6 top-3 rounded-3xl bg-white px-5 py-[2px] font-semibold text-dark-100">
         ${price}
       </div>
-      <div className="w-[100%] h-[180px]">
-        <img className="w-[100%] h-[100%]" src={image} alt="" />
+      <div className="h-[180px] w-[100%]">
+        <img className="h-[100%] w-[100%]" src={image} alt="" />
       </div>
-      <div className="p-4 flex flex-col gap-3">
+      <div className="flex flex-col gap-3 p-4">
         <p className="text-[16px] font-bold text-dark-100">{title}</p>
         <p className="flex items-center gap-2 text-[#7F7E83]">
           <FaLocationDot />
           {location}
         </p>
-        <p>{proprties}</p>
       </div>
     </div>
   );

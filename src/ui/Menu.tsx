@@ -1,63 +1,41 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useState } from "react";
+import { FaHome, FaMap } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { HiOutlineXMark } from "react-icons/hi2";
+import Button from "./Button";
 
 export default function Menu() {
-  const [showMenu, setShowMenu] = useState<boolean>(false);
-  const navigate = useNavigate();
-  function handleShowMenu() {
-    setShowMenu(!showMenu);
+  const [showBar, setShowBar] = useState<boolean>(false);
+  function handleAsideBar() {
+    setShowBar(!showBar);
   }
-  function handleNavigate(e: React.MouseEvent<HTMLAnchorElement>) {
-    const name = e.currentTarget.dataset.name;
-    if (name) {
-      navigate(name);
-    }
-  }
+
   return (
     <>
-      <div className="h-[30px] cursor-pointer " onClick={handleShowMenu}>
-        <img src="/menu.svg" className="w-[100%] h-[100%] md:hidden" />
+      <div
+        className={`${showBar ? "absolute left-0 top-[74px] z-10 h-[100vh] w-[280px] rounded-none bg-white px-6 py-8" : "hidden"} md:flex md:w-full md:flex-col md:gap-4 md:pt-4`}
+      >
+        <Button
+          link="/admin/dashboard"
+          action={handleAsideBar}
+          showbar={showBar}
+        >
+          <FaHome />
+          Dashboard
+        </Button>
+        <Button link="/admin/users" action={handleAsideBar} showbar={showBar}>
+          <FaUserGroup />
+          All Users
+        </Button>
+        <Button link="/admin/trips" action={handleAsideBar} showbar={showBar}>
+          <FaMap />
+          AI Trips
+        </Button>
       </div>
-      {showMenu ? (
-        <div className="cursor-pointer absolute top-12 right-4 inline-block text-left">
-          <div className="absolute   right-0 z-10 mt-2 w-[180px] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden">
-            <div className="py-1 divide-y divide-dark-100">
-              <a
-                data-name="/admin"
-                className="block px-4 py-2 text-sm font-semibold  text-dark-100"
-                onClick={(e) => {
-                  handleShowMenu();
-                  handleNavigate(e);
-                }}
-              >
-                Dashboard
-              </a>
-              <a
-                data-name="users"
-                className="block px-4 py-2 text-sm font-semibold text-dark-100"
-                onClick={(e) => {
-                  handleShowMenu();
-                  handleNavigate(e);
-                }}
-              >
-                All Users
-              </a>
-              <a
-                data-name="trips"
-                className="block px-4 py-2 text-sm font-semibold text-dark-100"
-                onClick={(e) => {
-                  handleShowMenu();
-                  handleNavigate(e);
-                }}
-              >
-                AI Trips
-              </a>
-            </div>
-          </div>
-        </div>
-      ) : (
-        " "
-      )}
+      <div className="cursor-pointer md:hidden" onClick={handleAsideBar}>
+        {showBar ? <HiOutlineXMark size={24} /> : <GiHamburgerMenu size={20} />}
+      </div>
     </>
   );
 }

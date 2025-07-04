@@ -11,6 +11,7 @@ import ClientLayout from "./ui/ClientLayout";
 import Payment from "./pages/Payment";
 import Login from "./pages/Login";
 import AuthCallback from "./features/Auth/AuthCallback";
+import Trip from "./features/tirps/Trip";
 const router = createBrowserRouter([
   {
     index: true,
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "trips",
         element: <Trips />,
+      },
+      {
+        path: "trips/:tripId",
+        element: <Trip />,
       },
     ],
   },

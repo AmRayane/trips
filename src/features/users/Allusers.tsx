@@ -25,7 +25,7 @@ export default function Allusers() {
     <div className="  ">
       {data?.users?.map((user, index) => (
         <div
-          className={`grid  items-center grid-cols-[25%_25%_15%_15%_17%_3%] px-5 py-4 ${
+          className={`grid grid-cols-[40%_40%_17%_3%]  items-center md:grid-cols-[25%_25%_15%_15%_17%_3%] px-5 py-4 ${
             index % 2 === 0 ? "bg-[#F9FBFC]" : ""
           }`}
         >
@@ -40,8 +40,8 @@ export default function Allusers() {
             <p className="font-bold">{user.name}</p>
           </div>
           <p>{user.email}</p>
-          <p>{fomatDate(user.$createdAt)}</p>
-          <p>{Math.ceil(Math.random() * 10)}</p>
+          <p className="hidden md:block">{fomatDate(user.$createdAt)}</p>
+          <p className="hidden md:block">{Math.ceil(Math.random() * 10)}</p>
           <p
             className={
               user.status == "admin" ? statusStyle.admin : statusStyle.user

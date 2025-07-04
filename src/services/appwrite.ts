@@ -5,7 +5,8 @@ export const DATABASE_ID = "685b1e61002166b5e7f1";
 export const APPWRITE_USER_ID = "6860549600322ed00d50";
 export const APPWRITE_TRIPS_ID = "685dacd800306a746d39";
 export const APPWRITE_BUCKET_ID = "685da78600069ebc659b";
-
+export const GEMINI_API_KEY = "AIzaSyAlM-Qbx-WaPCA87kdz2B_wJvga6SW5Gtk";
+export const UNPLASH_KEY = "G4rRAXG8zXlNRmU8qBL2XA2ZgTgzpuAb-l4ULJMMDnQ";
 export const client = new Client()
   .setEndpoint("https://fra.cloud.appwrite.io/v1")
   .setProject(APPWRITE_PROJECT_ID);

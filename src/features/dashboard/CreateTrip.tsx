@@ -158,7 +158,7 @@ export default function CreateTrip() {
       </div>
       <div className="flex flex-col gap-2 mt-4 text-[#7F7E83]">
         <label htmlFor="" className="">
-          Travel Style
+          intersets Style
         </label>
         <select
           disabled={isLoading}

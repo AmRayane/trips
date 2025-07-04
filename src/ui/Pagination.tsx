@@ -1,13 +1,17 @@
 import { useSearchParams } from "react-router";
-import { useUsers } from "./useUsers";
-import { MAX_PAGE } from "../../types";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
-
-export default function Pagination() {
+type PaginationProps = {
+  total: number | 0;
+  max_page: number;
+  isLoading: boolean;
+};
+export default function Pagination({
+  total,
+  max_page,
+  isLoading,
+}: PaginationProps) {
   const [searchParamas, setSearchParams] = useSearchParams();
-  const { data, isLoading } = useUsers();
-  const total = data?.total ?? 0;
-  const maximumPages = Math.ceil(total / MAX_PAGE);
+  const maximumPages = Math.ceil(total / max_page);
   const currentPage: number = parseInt(searchParamas.get("page") ?? "1");
   const pageListe = Array.from({ length: maximumPages }, (_, i) => i + 1);
 
@@ -33,7 +37,7 @@ export default function Pagination() {
       <button
         onClick={() => previousPage()}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px] "
+        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px] bg-white"
       >
         <GrFormPreviousLink /> Previous
       </button>
@@ -51,7 +55,7 @@ export default function Pagination() {
       <button
         onClick={() => nextPage()}
         disabled={currentPage === maximumPages}
-        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px]"
+        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px] bg-white"
       >
         Next <GrFormNextLink />
       </button>

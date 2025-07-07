@@ -17,10 +17,15 @@ export type Trip = {
 export type User = {
   name: string;
   email: string;
-  image: string;
   status: string;
+  image?: string;
   $createdAt: string;
-  $id: string;
+  accountId: string;
+};
+
+export type UserInfo = {
+  email: string;
+  password: string;
 };
 
 export type Inputs = {

@@ -1,9 +1,3 @@
-import { Outlet } from "react-router";
-
 export default function ClientLayout() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return <div>this user page</div>;
 }

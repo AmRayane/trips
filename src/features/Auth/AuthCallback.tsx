@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { account } from "../../services/appwrite";
-import { getExitingUser, storeUserData } from "../../services/apiAuth";
+import { getExistingUser } from "../../services/apiAuth";
 import { useNavigate } from "react-router";
 
 export default function AuthCallback() {
@@ -9,10 +9,9 @@ export default function AuthCallback() {
     async function initAuth() {
       try {
         const authUser = await account.get();
-        const existingUser = await getExitingUser(authUser.$id);
+        const existingUser = await getExistingUser(authUser.$id);
         if (!existingUser) {
-          await storeUserData();
-          return navigate("/client");
+          return navigate("/");
         }
         if (existingUser.status === "admin") {
           return navigate("/admin/dashboard");
@@ -20,10 +19,9 @@ export default function AuthCallback() {
         return navigate("/client");
       } catch (error) {
         console.error("Erreur de connexion :", error);
-        navigate("/login");
+        navigate("/");
       }
     }
-
     initAuth();
   }, []);
 

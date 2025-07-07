@@ -4,6 +4,7 @@ import { FaUserGroup } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiOutlineXMark } from "react-icons/hi2";
 import Button from "./Button";
+import Logout from "../features/Auth/Logout";
 
 export default function Menu() {
   const [showBar, setShowBar] = useState<boolean>(false);
@@ -32,7 +33,11 @@ export default function Menu() {
           <FaMap />
           AI Trips
         </Button>
+        <div>
+          <Logout />
+        </div>
       </div>
+
       <div className="cursor-pointer md:hidden" onClick={handleAsideBar}>
         {showBar ? <HiOutlineXMark size={24} /> : <GiHamburgerMenu size={20} />}
       </div>

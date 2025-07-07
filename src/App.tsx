@@ -3,15 +3,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AdminLayout from "./ui/AdminLayout";
 import Dashboard from "./pages/Dashboard";
-import TripsPage from "./pages/TripsPage";
 import Users from "./pages/Users";
 import Trips from "./pages/Trips";
 import { Toaster } from "react-hot-toast";
 import ClientLayout from "./ui/ClientLayout";
-import Payment from "./pages/Payment";
 import Login from "./pages/Login";
 import AuthCallback from "./features/Auth/AuthCallback";
 import Trip from "./features/tirps/Trip";
+import protectLoader from "./ui/protectLoader";
 const router = createBrowserRouter([
   {
     index: true,
@@ -44,20 +43,12 @@ const router = createBrowserRouter([
         element: <Trip />,
       },
     ],
+    loader: protectLoader,
   },
+
   {
     path: "/client",
     element: <ClientLayout />,
-    children: [
-      {
-        path: "tripspage",
-        element: <TripsPage />,
-      },
-      {
-        path: "payment",
-        element: <Payment />,
-      },
-    ],
   },
 ]);
 

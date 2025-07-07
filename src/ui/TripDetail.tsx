@@ -2,6 +2,7 @@ import { gradientColors } from "../types";
 import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa6";
+import { useGetUser } from "../features/Auth/useGetUser";
 
 type TripDetailProps = {
   country: string;
@@ -34,7 +35,10 @@ export default function TripDetail({
 }: TripDetailProps) {
   const randomOne: number = Math.ceil(Math.random() * 11);
   const randomTwo: number = Math.ceil(Math.random() * 11);
-  console.log(JSON.parse(itinerary));
+  const { user } = useGetUser();
+  const status: string = user?.status;
+
+  console.log(status);
   return (
     <div className="flex flex-col gap-y-4 bg-[#f2f4f7] px-4 pb-12 pt-4 md:px-24 md:pt-10 lg:mx-auto lg:px-[260px]">
       <h1 className="text-[20px] font-bold md:text-[25px] lg:text-[40px]">
@@ -118,12 +122,19 @@ export default function TripDetail({
         </div>
       </div>
       <div>map</div>
-      <button className="rounded-xl bg-[#256FF1] py-2 text-white">
-        Pay and join trip{" "}
-        <span className="ml-2 rounded-3xl bg-white px-3 py-1 text-black">
-          ${price}
-        </span>
-      </button>
+      {status === "client" && (
+        <button className="cursor-pointer rounded-xl bg-[#256FF1] py-2 text-white">
+          Pay and join trip{" "}
+          <span className="ml-2 rounded-3xl bg-white px-3 py-1 text-black">
+            ${price}
+          </span>
+        </button>
+      )}
+      {status === "admin" && (
+        <button className="cursor-pointer rounded-xl bg-red-600 py-2 text-white">
+          Delete trip{" "}
+        </button>
+      )}
     </div>
   );
 }

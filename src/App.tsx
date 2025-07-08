@@ -10,7 +10,7 @@ import ClientLayout from "./ui/ClientLayout";
 import Login from "./pages/Login";
 import AuthCallback from "./features/Auth/AuthCallback";
 import Trip from "./features/tirps/Trip";
-import protectLoader from "./ui/protectLoader";
+import protectLoader from "./features/Auth/protectLoader";
 const router = createBrowserRouter([
   {
     index: true,
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "auth-callback",
+    path: "/auth-callback",
     element: <AuthCallback />,
   },
 
@@ -38,14 +38,13 @@ const router = createBrowserRouter([
         path: "trips",
         element: <Trips />,
       },
-      {
-        path: "trips/:tripId",
-        element: <Trip />,
-      },
     ],
     loader: protectLoader,
   },
-
+  {
+    path: "trips/:tripId",
+    element: <Trip />,
+  },
   {
     path: "/client",
     element: <ClientLayout />,

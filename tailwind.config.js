@@ -73,6 +73,13 @@ export default {
         linear100: "var(--background-image-linear100)",
         linear200: "var(--background-image-linear200)",
       },
+      spacing: {
+        mobile: "30px",
+        tablet: "80px",
+        desktop: "170px",
+        "small-y": "30px",
+        "large-y": "40px",
+      },
     },
   },
   plugins: [],

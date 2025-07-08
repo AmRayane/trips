@@ -5,7 +5,7 @@ export default function LatestUsers() {
   const users = data?.slice(0, 4);
   if (isLoading) return <p>data is loading</p>;
   return (
-    <div className="mt-8 flex flex-col gap-6 rounded-xl bg-white p-10">
+    <div className="mt-8 flex flex-col gap-6 rounded-xl bg-white p-10 shadow-sm">
       <div className="divide-y-2">
         <h2 className="pb-3 text-[20px] font-semibold text-dark-100">
           Latest Users signups

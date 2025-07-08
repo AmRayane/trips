@@ -11,8 +11,8 @@ const data = userGrowth;
 
 export default function UserBarchart() {
   return (
-    <div className="rounded-2xl bg-white p-6 divide-y-2">
-      <h1 className="text-dark-100 text-[20px] font-semibold pb-3">
+    <div className="divide-y-2 rounded-2xl bg-white p-6 shadow-sm">
+      <h1 className="pb-3 text-[20px] font-semibold text-dark-100">
         User growth
       </h1>
       <div className="h-[250px] pt-3">

@@ -15,14 +15,14 @@ const data = [
 export default function TripsGrowthChart() {
   const increasing = data[0].numberofusers < data[1].numberofusers;
   const percentage = Math.round(
-    (data[0].numberofusers / data[1].numberofusers) * 100
+    (data[0].numberofusers / data[1].numberofusers) * 100,
   );
   return (
-    <div className="bg-white p-5 rounded-xl flex flex-col gap-6">
-      <h2 className="text-dark-100 font-medium ]">Total Trips</h2>
+    <div className="flex flex-col gap-6 rounded-xl bg-white p-5 shadow-sm">
+      <h2 className="] font-medium text-dark-100">Total Trips</h2>
       <div className="flex">
         <div className="flex-1">
-          <h2 className="text-4xl font-semibold mb-3">
+          <h2 className="mb-3 text-4xl font-semibold">
             {dashboardStats.totalTrips}
           </h2>
           <div className="flex gap-2">

@@ -7,7 +7,7 @@ import Header from "../ui/Header";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-[calc(100vh-74px)] bg-light-300 px-8 pb-10 pt-5">
+    <div className="min-h-[calc(100vh-74px)] bg-[#FAFAFA] px-8 pb-10 pt-5">
       <Header
         title="Welcome Admin"
         buttonDescription="Add new trips"

@@ -11,7 +11,7 @@ export default function AiTrip() {
     <div className="px-1 pb-4 pt-6">
       <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3 border-b-[1px] border-b-gray-200 pb-8">
         {data?.trips.map((trip: Trip) => (
-          <Link to={`/admin/trips/${trip.$id}`}>
+          <Link to={`/trips/${trip.$id}`}>
             <BoxTrip
               price={parseInt(trip.price)}
               image={trip.imageUrl}

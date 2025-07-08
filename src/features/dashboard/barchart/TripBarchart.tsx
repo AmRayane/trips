@@ -10,8 +10,8 @@ const data = userGrowth;
 
 export default function TripBarchart() {
   return (
-    <div className="rounded-2xl bg-white p-6 divide-y-2">
-      <h1 className="text-dark-100 text-[20px] font-semibold pl-6 pb-3">
+    <div className="divide-y-2 rounded-2xl bg-white p-6 shadow-sm">
+      <h1 className="pb-3 pl-6 text-[20px] font-semibold text-dark-100">
         Trips trend
       </h1>
       <div className="h-[250px] pt-3">

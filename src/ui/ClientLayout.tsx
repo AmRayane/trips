@@ -1,3 +1,13 @@
+import Hero from "../features/user/Hero";
+import UserFeatures from "../features/user/UserFeatures";
+import UserTrips from "../features/user/UserTrips";
+
 export default function ClientLayout() {
-  return <div>this user page</div>;
+  return (
+    <>
+      <Hero />
+      <UserFeatures />
+      <UserTrips />
+    </>
+  );
 }

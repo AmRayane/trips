@@ -17,11 +17,11 @@ export default function Button({
   const isActive = (path: string) => location.pathname === path;
   const navigate = useNavigate();
   // Classes de base pour tous les boutons
-  const baseClasses = "w-full flex gap-3 items-center px-4 py-3 rounded-lg";
+  const baseClasses = "w-full flex gap-3 items-center  px-4 py-3 rounded-lg";
 
   // Classes conditionnelles
-  const activeClasses = "bg-primary-100 text-white";
-  const inactiveClasses = "text-gray-100 hover:bg-primary-100 hover:text-white";
+  const activeClasses = "bg-[#3B82F6] text-white";
+  const inactiveClasses = "text-gray-100 hover:bg-[#3B82F6] hover:text-white";
   return (
     <button
       onClick={() => {

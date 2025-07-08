@@ -3,6 +3,8 @@ import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa6";
 import { useGetUser } from "../features/Auth/useGetUser";
+import { FaArrowLeft } from "react-icons/fa6";
+import { useNavigate } from "react-router";
 
 type TripDetailProps = {
   country: string;
@@ -35,12 +37,25 @@ export default function TripDetail({
 }: TripDetailProps) {
   const randomOne: number = Math.ceil(Math.random() * 11);
   const randomTwo: number = Math.ceil(Math.random() * 11);
+  const navigate = useNavigate();
   const { user } = useGetUser();
   const status: string = user?.status;
+  const userStyle =
+    status === "client"
+      ? "md:px-24 lg:px-[330px] px-4"
+      : "md:px-24 lg:px-[330px] px-4";
 
-  console.log(status);
   return (
-    <div className="flex flex-col gap-y-4 bg-[#f2f4f7] px-4 pb-12 pt-4 md:px-24 md:pt-10 lg:mx-auto lg:px-[260px]">
+    <div
+      className={`relative flex flex-col gap-y-4 bg-[#f2f4f7] pb-12 pt-4 md:pt-10 lg:mx-auto ${userStyle}`}
+    >
+      <button
+        onClick={() => navigate(-1)}
+        className="absolute left-[10%] flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-[16px] font-semibold shadow-xl"
+      >
+        <FaArrowLeft />
+        Go Back
+      </button>
       <h1 className="text-[20px] font-bold md:text-[25px] lg:text-[40px]">
         {name} : {interests}
       </h1>
@@ -52,8 +67,9 @@ export default function TripDetail({
           <IoLocationOutline /> {location}
         </div>
       </div>
-      <div className="flex w-[300px] content-center items-center overflow-hidden rounded-xl md:w-[450px] lg:h-[308px] lg:w-[600px]">
+      <div className="relative flex w-[300px] content-center items-center overflow-hidden rounded-xl md:w-[450px] lg:h-[308px] lg:w-[600px]">
         <img src={image} className="h-[100%] w-[100%]" alt="" />
+        <div className="absolute inset-0 z-10 bg-[#0000003e]"></div>
       </div>
       <div className="flex items-center gap-3">
         <span
@@ -84,7 +100,7 @@ export default function TripDetail({
       </div>
       <div className="flex justify-between">
         <div>
-          <h3 className="text-[18px] font-bold md:text-[20px] lg:text-[25px]">
+          <h3 className="text-[18px] font-bold leading-[45px] md:text-[20px] lg:text-[25px]">
             {numberOfDays}-Days in {country}
           </h3>
           <h4 className="mt-2 text-[#7F7E83] md:text-[18px]">
@@ -95,16 +111,18 @@ export default function TripDetail({
           <p className="rounded-3xl bg-white px-3 py-1">${price}</p>
         </div>
       </div>
-      <div className="flex flex-col gap-3 text-[#2E2C48]">{description}</div>
+      <div className="flex flex-col gap-3 leading-[35px] text-[#2E2C48]">
+        {description}
+      </div>
       <div>
         {JSON.parse(itinerary).map((item) => (
           <div>
-            <p className="text-[20px] font-semibold text-[#2E2C48]">
+            <p className="text-[20px] font-semibold leading-[35px] text-[#2E2C48]">
               day {item.day} in {item.location} :
             </p>
             <div className="flex flex-col gap-3 py-3 pl-6">
               {item.activities.map((activity) => (
-                <li>
+                <li className="leading-[35px]">
                   <span className="font-medium"> {activity.time} : </span>{" "}
                   {activity.description}
                 </li>
@@ -114,10 +132,12 @@ export default function TripDetail({
         ))}
       </div>
       <div>
-        <p className="mb-3 font-bold text-[#2E2C48]">Best Time to Visit:</p>
+        <p className="mb-3 font-bold leading-[35px] text-[#2E2C48]">
+          Best Time to Visit:
+        </p>
         <div className="flex flex-col gap-3">
           {JSON.parse(bestTimeToVisit).map((perioud: string) => (
-            <li>{perioud}</li>
+            <li className="leading-[35px]">{perioud}</li>
           ))}
         </div>
       </div>

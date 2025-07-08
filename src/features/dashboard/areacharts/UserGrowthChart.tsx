@@ -15,17 +15,17 @@ const data = [
 export default function UserGrowthChart() {
   const increasing = data[0].numberofusers < data[1].numberofusers;
   const percentage = Math.round(
-    (data[0].numberofusers / data[1].numberofusers) * 100
+    (data[0].numberofusers / data[1].numberofusers) * 100,
   );
   return (
-    <div className="bg-white p-5 rounded-xl flex flex-col gap-6">
-      <h2 className="text-dark-100 font-medium ]">Total Users</h2>
+    <div className="flex flex-col gap-6 rounded-lg bg-white p-5 shadow-sm">
+      <h2 className="] font-medium text-dark-100">Total Users</h2>
       <div className="flex">
         <div className="flex-1">
-          <h2 className="text-4xl font-semibold mb-3">
+          <h2 className="mb-3 text-4xl font-semibold">
             {dashboardStats.totalUsers}
           </h2>
-          <div className="flex gap-2 ">
+          <div className="flex gap-2">
             <p
               className={`flex items-center gap-1 ${
                 increasing ? "text-success-500" : "text-red-100"

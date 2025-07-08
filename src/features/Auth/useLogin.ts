@@ -17,9 +17,12 @@ export function useLogin() {
     onSuccess: async () => {
       const user = await account.get();
       const existingUser = await getExistingUser(user.$id);
-      console.log(existingUser?.status);
-      if (existingUser?.status === "admin") navigate("admin/dashboard");
-      if (existingUser?.status === "client") navigate("client");
+      if (existingUser?.status === "admin") {
+        navigate("/admin/dashboard");
+      }
+      if (existingUser?.status === "client") {
+        navigate("/client");
+      }
       toast.success(`Welcome ${existingUser?.name}`);
     },
     onError: (error) => {

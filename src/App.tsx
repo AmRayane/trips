@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import AuthCallback from "./features/Auth/AuthCallback";
 import Trip from "./features/tirps/Trip";
 import protectLoader from "./features/Auth/protectLoader";
+import Form from "./pages/Form";
 const router = createBrowserRouter([
   {
     index: true,
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/client",
     element: <ClientLayout />,
+  },
+  {
+    path: "form/:type",
+    element: <Form />,
   },
 ]);
 

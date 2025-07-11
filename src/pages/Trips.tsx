@@ -1,5 +1,4 @@
 import AiTrip from "../features/tirps/AiTrip";
-import GeminiForm from "../features/tirps/GeminiForm";
 import Header from "../ui/Header";
 
 export default function Trips() {
@@ -9,9 +8,7 @@ export default function Trips() {
         title="Add new Trips"
         description="View and generate AI travel plans"
         buttonDescription="Trip with AI"
-      >
-        <GeminiForm />
-      </Header>
+      />
       <AiTrip />
     </div>
   );

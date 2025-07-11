@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useGeminiTrip } from "./useGeminiTrip";
 import { RiGeminiFill } from "react-icons/ri";
+import { useGeminiTrip } from "../tirps/useGeminiTrip";
 
 type TripParams = {
   numberOfDays: number;

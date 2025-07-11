@@ -40,121 +40,123 @@ export default function TripDetail({
   const navigate = useNavigate();
   const { user } = useGetUser();
   const status: string = user?.status;
-  const userStyle =
-    status === "client"
-      ? "md:px-24 lg:px-[330px] px-4"
-      : "md:px-24 lg:px-[330px] px-4";
 
   return (
-    <div
-      className={`relative flex flex-col gap-y-4 bg-[#f2f4f7] pb-12 pt-4 md:pt-10 lg:mx-auto ${userStyle}`}
-    >
-      <button
-        onClick={() => navigate(-1)}
-        className="absolute left-[10%] flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-[16px] font-semibold shadow-xl"
-      >
-        <FaArrowLeft />
-        Go Back
-      </button>
-      <h1 className="text-[20px] font-bold md:text-[25px] lg:text-[40px]">
-        {name} : {interests}
-      </h1>
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 text-[#7F7E83] lg:text-[18px]">
-          <HiMiniCalendarDateRange /> {numberOfDays} day plan
-        </div>
-        <div className="flex items-center gap-2 text-[#7F7E83] lg:text-[18px]">
-          <IoLocationOutline /> {location}
-        </div>
-      </div>
-      <div className="relative flex w-[300px] content-center items-center overflow-hidden rounded-xl md:w-[450px] lg:h-[308px] lg:w-[600px]">
-        <img src={image} className="h-[100%] w-[100%]" alt="" />
-        <div className="absolute inset-0 z-10 bg-[#0000003e]"></div>
-      </div>
-      <div className="flex items-center gap-3">
-        <span
-          style={{
-            backgroundColor: gradientColors[randomOne].background,
-            color: gradientColors[randomOne].text,
-          }}
-          className={`rounded-[40px] px-4 py-1`}
+    <div className="px-4 md:px-24 lg:px-[330px]">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col gap-y-4 pb-12 pt-4 md:pt-10 lg:mx-auto">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute left-[10%] flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-[16px] font-semibold shadow-xl"
         >
-          {interests}
-        </span>
-        <span
-          style={{
-            backgroundColor: gradientColors[randomTwo].background,
-            color: gradientColors[randomTwo].text,
-          }}
-          className={`rounded-[40px] px-4 py-1`}
-        >
-          {travelStyle}
-        </span>
-        <span className="flex">
-          <FaStar color="#FFC542" />
-          <FaStar color="#FFC542" />
-          <FaStar color="#FFC542" />
-          <FaStar color="#FFC542" />
-          <FaStar color="#FFC542" />
-        </span>
-      </div>
-      <div className="flex justify-between">
-        <div>
-          <h3 className="text-[18px] font-bold leading-[45px] md:text-[20px] lg:text-[25px]">
-            {numberOfDays}-Days in {country}
-          </h3>
-          <h4 className="mt-2 text-[#7F7E83] md:text-[18px]">
-            {interests},{travelStyle}
-          </h4>
+          <FaArrowLeft />
+          Go Back
+        </button>
+        <h1 className="text-[20px] font-bold md:text-[25px] lg:text-[35px]">
+          {name} : {interests}
+        </h1>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 text-[#7F7E83] lg:text-[18px]">
+            <HiMiniCalendarDateRange /> {numberOfDays} day plan
+          </div>
+          <div className="flex items-center gap-2 text-[#7F7E83] lg:text-[18px]">
+            <IoLocationOutline /> {location}
+          </div>
         </div>
-        <div>
-          <p className="rounded-3xl bg-white px-3 py-1">${price}</p>
+        <div className="relative flex w-[300px] content-center items-center overflow-hidden rounded-xl md:w-[450px] lg:h-[308px] lg:w-[600px]">
+          <img src={image} className="h-[100%] w-[100%]" alt="" />
+          <div className="absolute inset-0 z-10 bg-[#0000003e]"></div>
         </div>
-      </div>
-      <div className="flex flex-col gap-3 leading-[35px] text-[#2E2C48]">
-        {description}
-      </div>
-      <div>
-        {JSON.parse(itinerary).map((item) => (
+        <div className="flex items-center gap-3">
+          <span
+            style={{
+              backgroundColor: gradientColors[randomOne].background,
+              color: gradientColors[randomOne].text,
+            }}
+            className={`rounded-[40px] px-4 py-1`}
+          >
+            {interests}
+          </span>
+          <span
+            style={{
+              backgroundColor: gradientColors[randomTwo].background,
+              color: gradientColors[randomTwo].text,
+            }}
+            className={`rounded-[40px] px-4 py-1`}
+          >
+            {travelStyle}
+          </span>
+          <span className="flex">
+            <FaStar color="#FFC542" />
+            <FaStar color="#FFC542" />
+            <FaStar color="#FFC542" />
+            <FaStar color="#FFC542" />
+            <FaStar color="#FFC542" />
+          </span>
+        </div>
+        <div className="flex flex-col gap-y-12">
           <div>
-            <p className="text-[20px] font-semibold leading-[35px] text-[#2E2C48]">
-              day {item.day} in {item.location} :
+            <div className="flex justify-between">
+              <div>
+                <h3 className="text-[18px] font-bold leading-[45px] md:text-[20px] lg:text-[25px]">
+                  {numberOfDays}-Days in {country}
+                </h3>
+                <h4 className="mt-2 text-[#7F7E83]">
+                  {interests},{travelStyle}
+                </h4>
+              </div>
+              <div>
+                <p className="rounded-3xl bg-white px-3 py-1 shadow-xl">
+                  ${price}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 leading-[35px] text-[#2E2C48]">
+              {description}
+            </div>
+          </div>
+          <div className="flex flex-col gap-y-7">
+            {JSON.parse(itinerary).map((item) => (
+              <div>
+                <p className="text-[20px] font-semibold text-[#2E2C48]">
+                  day {item.day} in {item.location} :
+                </p>
+                <div className="flex flex-col gap-3 pl-6 pt-[6px]">
+                  {item.activities.map((activity) => (
+                    <li className="leading-[35px]">
+                      <span className="font-medium"> {activity.time} : </span>{" "}
+                      {activity.description}
+                    </li>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="mb-3 text-[20px] font-bold text-[#2E2C48]">
+              Best Time to Visit:
             </p>
-            <div className="flex flex-col gap-3 py-3 pl-6">
-              {item.activities.map((activity) => (
-                <li className="leading-[35px]">
-                  <span className="font-medium"> {activity.time} : </span>{" "}
-                  {activity.description}
-                </li>
+            <div className="flex flex-col gap-3">
+              {JSON.parse(bestTimeToVisit).map((perioud: string) => (
+                <li className="leading-[30px]">{perioud}</li>
               ))}
             </div>
           </div>
-        ))}
-      </div>
-      <div>
-        <p className="mb-3 font-bold leading-[35px] text-[#2E2C48]">
-          Best Time to Visit:
-        </p>
-        <div className="flex flex-col gap-3">
-          {JSON.parse(bestTimeToVisit).map((perioud: string) => (
-            <li className="leading-[35px]">{perioud}</li>
-          ))}
+          <div>map</div>
         </div>
+        {status === "client" && (
+          <button className="cursor-pointer rounded-xl bg-[#256FF1] py-2 text-white">
+            Pay and join trip{" "}
+            <span className="ml-2 rounded-3xl bg-white px-3 py-1 text-black">
+              ${price}
+            </span>
+          </button>
+        )}
+        {status === "admin" && (
+          <button className="cursor-pointer rounded-xl bg-red-600 py-2 text-white">
+            Delete trip{" "}
+          </button>
+        )}
       </div>
-      <div>map</div>
-      {status === "client" && (
-        <button className="cursor-pointer rounded-xl bg-[#256FF1] py-2 text-white">
-          Pay and join trip{" "}
-          <span className="ml-2 rounded-3xl bg-white px-3 py-1 text-black">
-            ${price}
-          </span>
-        </button>
-      )}
-      {status === "admin" && (
-        <button className="cursor-pointer rounded-xl bg-red-600 py-2 text-white">
-          Delete trip{" "}
-        </button>
-      )}
     </div>
   );
 }

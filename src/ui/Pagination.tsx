@@ -33,18 +33,18 @@ export default function Pagination({
   }
 
   return (
-    <div className=" px-5 py-5 flex items-center justify-between border-t-[1px] border-[#EAECF0]">
+    <div className="flex items-center justify-between border-t-[1px] border-[#EAECF0] px-5 py-5">
       <button
         onClick={() => previousPage()}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px] bg-white"
+        className="flex items-center gap-1 rounded-xl border-[1px] border-[#EAECF0] bg-white px-4 py-2 shadow-md"
       >
         <GrFormPreviousLink /> Previous
       </button>
-      <div className="flex items-center gap-1 ">
+      <div className="flex items-center gap-1">
         {pageListe.map((page) => (
           <p
-            className={`py-2 px-4 rounded-xl  ${
+            className={`rounded-xl px-4 py-2 ${
               page === currentPage ? "bg-[#256FF1] text-white" : ""
             }`}
           >
@@ -55,7 +55,7 @@ export default function Pagination({
       <button
         onClick={() => nextPage()}
         disabled={currentPage === maximumPages}
-        className="flex items-center gap-1 px-4 py-2 rounded-xl border-[#EAECF0] border-[1px] bg-white"
+        className="flex items-center gap-1 rounded-xl border-[1px] border-[#EAECF0] bg-white px-4 py-2 shadow-md"
       >
         Next <GrFormNextLink />
       </button>

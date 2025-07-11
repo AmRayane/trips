@@ -1,9 +1,9 @@
-import AddNewUser from "../features/users/AddNewUser";
 import Allusers from "../features/users/Allusers";
 import Pagination from "../ui/Pagination";
 import { useUsers } from "../features/users/useUsers";
 import Header from "../ui/Header";
 import { MAX_PAGE } from "../types";
+import UserBarInformation from "../ui/UserBarInformation";
 
 export default function Users() {
   const { isLoading, data } = useUsers();
@@ -14,18 +14,9 @@ export default function Users() {
         title="Manage Users"
         buttonDescription="Add new users"
         description="Filter, sort, and access detailed user profiles"
-      >
-        <AddNewUser />
-      </Header>
+      />
       <div className="mt-7 flex flex-col rounded-md bg-[#FFFFFF]">
-        <div className="grid grid-cols-[40%_40%_17%_3%] px-5 py-4 text-[#7F7E83] md:grid-cols-[25%_25%_15%_15%_17%_3%]">
-          <p>NAME</p>
-          <p>EMAIL ADDRESS</p>
-          <p className="hidden md:block">DATE JOINED</p>
-          <p className="hidden md:block">ITINERARY CREATED</p>
-          <p>STATUS</p>
-          <p></p>
-        </div>
+        <UserBarInformation />
         <Allusers />
         <Pagination
           total={data?.total ?? 0}

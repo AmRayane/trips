@@ -18,24 +18,25 @@ export default function Allusers() {
 
   //object for styling user and admin
   const statusStyle = {
-    admin: "bg-[#F2F4F7] text-[#344054] py-1 px-4   max-w-fit  rounded-3xl",
-    user: "bg-[#ECFDF3] text-[#027A48] py-1 px-4 max-w-fit rounded-3xl",
+    admin: "bg-[#ced5df63] text-[#273040] py-1 px-4   max-w-fit  rounded-3xl",
+    user: "bg-[#63cc8f36] text-[#0d5c3b] py-1 px-4 max-w-fit rounded-3xl",
   };
   return (
-    <div className="  ">
+    <div className=" ">
       {data?.users?.map((user, index) => (
         <div
-          className={`grid grid-cols-[40%_40%_17%_3%]  items-center md:grid-cols-[25%_25%_15%_15%_17%_3%] px-5 py-4 ${
+          className={`grid grid-cols-[40%_40%_17%_3%] items-center px-5 py-4 md:grid-cols-[25%_25%_15%_15%_17%_3%] ${
             index % 2 === 0 ? "bg-[#F9FBFC]" : ""
           }`}
         >
-          <div className="flex  gap-3 items-center">
-            <div className="flex overflow-hidden rounded-full items-center justify-center">
+          <div className="flex items-center gap-3">
+            <div className="relative flex items-center justify-center overflow-hidden rounded-full">
               <img
                 src={user.image}
                 alt="user image"
-                className="w-[40px] h-[40px]"
+                className="h-[40px] w-[40px]"
               />
+              <div className="absolute inset-0 bg-[#0000002f]"></div>
             </div>
             <p className="font-bold">{user.name}</p>
           </div>
@@ -43,9 +44,7 @@ export default function Allusers() {
           <p className="hidden md:block">{fomatDate(user.$createdAt)}</p>
           <p className="hidden md:block">{Math.ceil(Math.random() * 10)}</p>
           <p
-            className={
-              user.status == "admin" ? statusStyle.admin : statusStyle.user
-            }
+            className={`${user.status == "admin" ? statusStyle.admin : statusStyle.user} shadow-md`}
           >
             {user.status}
           </p>
@@ -55,7 +54,7 @@ export default function Allusers() {
                 <span className="flex gap-2">
                   <p>Sure want to delete user ?</p>
                   <button
-                    className="p-2 bg-red-500 text-white rounded-md"
+                    className="rounded-md bg-red-500 p-2 text-white"
                     onClick={() => {
                       handleDeleteUser(user);
                       toast.dismiss(t.id);
@@ -64,7 +63,7 @@ export default function Allusers() {
                     Delete
                   </button>
                   <button
-                    className="px-2 py-1 bg-gray-600 text-white rounded-md"
+                    className="rounded-md bg-gray-600 px-2 py-1 text-white"
                     onClick={() => toast.dismiss(t.id)}
                   >
                     Dismiss

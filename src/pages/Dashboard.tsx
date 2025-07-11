@@ -1,4 +1,3 @@
-import CreateTrip from "../features/dashboard/CreateTrip";
 import DashboardAreaChart from "../features/dashboard/DashboardAreaChart";
 import DashboardLatest from "../features/dashboard/DashboardLatest";
 import DashboardTables from "../features/dashboard/DashboardTables";
@@ -12,9 +11,7 @@ export default function Dashboard() {
         title="Welcome Admin"
         buttonDescription="Add new trips"
         description="Track activity, trends, and popular destinations in real time"
-      >
-        <CreateTrip />
-      </Header>
+      ></Header>
       <DashboardAreaChart />
       <DashboardTrips />
       <DashboardTables />

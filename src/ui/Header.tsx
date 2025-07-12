@@ -4,12 +4,14 @@ type UserProps = {
   title: string;
   description: string;
   buttonDescription: string;
+  link: string;
   handleClick?: () => void;
 };
 export default function Header({
   title,
   description,
   buttonDescription,
+  link,
 }: UserProps) {
   const navigate = useNavigate();
   return (
@@ -21,7 +23,7 @@ export default function Header({
       <button
         className="flex max-w-[400px] items-center justify-center gap-2 rounded-lg bg-primary-100 py-2 text-white md:px-9"
         onClick={() => {
-          navigate("/form/tripform");
+          navigate(link);
         }}
       >
         <img src="/plus.svg" />

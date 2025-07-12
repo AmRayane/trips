@@ -11,6 +11,7 @@ export default function Dashboard() {
         title="Welcome Admin"
         buttonDescription="Add new trips"
         description="Track activity, trends, and popular destinations in real time"
+        link="/form/tripform"
       ></Header>
       <DashboardAreaChart />
       <DashboardTrips />

@@ -14,6 +14,7 @@ export default function Users() {
         title="Manage Users"
         buttonDescription="Add new users"
         description="Filter, sort, and access detailed user profiles"
+        link="/form/userform"
       />
       <div className="mt-7 flex flex-col rounded-md bg-[#FFFFFF]">
         <UserBarInformation />

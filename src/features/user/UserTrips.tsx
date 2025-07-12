@@ -2,7 +2,7 @@ import AiTrip from "../tirps/AiTrip";
 
 export default function UserTrips() {
   return (
-    <div className="py-small-y md:py-large-y px-mobile sm:px-tablet md:px-desktop">
+    <div className="px-mobile py-small-y sm:px-tablet md:px-desktop md:py-large-y">
       <h1 className="text-[25px] font-bold text-dark-100 md:text-[36px]">
         Handpicked Trips
       </h1>

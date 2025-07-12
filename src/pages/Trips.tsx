@@ -8,6 +8,7 @@ export default function Trips() {
         title="Add new Trips"
         description="View and generate AI travel plans"
         buttonDescription="Trip with AI"
+        link="/form/geminiform"
       />
       <AiTrip />
     </div>

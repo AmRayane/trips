@@ -20,7 +20,7 @@ export default function AddNewUser() {
   return (
     <div className="flex h-[100vh] items-center">
       <form
-        className="mx-auto max-w-[1200px] rounded-lg border-2 bg-white px-4 py-10 md:w-[500px] lg:w-[650px]"
+        className="mx-auto max-w-[1200px] rounded-lg border-2 bg-white p-6 md:w-[500px] lg:w-[650px]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col gap-2">

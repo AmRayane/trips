@@ -13,32 +13,39 @@ export async function loginWithGoogle(): Promise<void> {
 }
 
 export async function storeUserDataFromGoogle(userStatus: string) {
-  const user = await account.get();
-  if (!user) {
-    redirect("/");
-    toast.error("User not found");
+  try {
+    const user = await account.get();
+    if (!user) {
+      toast.error("User not found");
+      window.location.href = "/";
+      return;
+    }
+
+    const { providerAccessToken } = await account.getSession("current");
+    const profilePicture = providerAccessToken
+      ? await getGooglePicture(providerAccessToken)
+      : null;
+
+    const createdUser = await databases.createDocument(
+      DATABASE_ID,
+      APPWRITE_USER_ID,
+      ID.unique(),
+      {
+        name: user.name,
+        email: user.email,
+        image: profilePicture,
+        joinedAt: new Date().toISOString(),
+        accountId: user.$id,
+        status: userStatus,
+      },
+    );
+
+    if (!createdUser?.$id) window.location.href = "/";
+  } catch (error) {
+    console.error("Erreur dans storeUserDataFromGoogle:", error);
+    toast.error("Failed to save Google user");
+    window.location.href = "/";
   }
-
-  const { providerAccessToken } = (await account.getSession("current")) || {};
-  const profilePicture = providerAccessToken
-    ? await getGooglePicture(providerAccessToken)
-    : null;
-
-  const createdUser = await databases.createDocument(
-    DATABASE_ID,
-    APPWRITE_USER_ID,
-    ID.unique(),
-    {
-      name: user.name,
-      email: user.email,
-      image: profilePicture,
-      joinedAt: new Date().toISOString(),
-      accountId: user.$id,
-      status: userStatus,
-    },
-  );
-
-  if (!createdUser.$id) redirect("/");
 }
 
 const getGooglePicture = async (accessToken: string) => {

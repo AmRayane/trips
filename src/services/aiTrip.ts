@@ -92,7 +92,7 @@ export async function createTripGemini({
   } catch (error) {
     console.error("Erreur gemini :", error);
   }
-  const imageUrl = await fetchUnsplashImage(
+  const imageUrl: string | null = await fetchUnsplashImage(
     `${trip.travelStyle} ${trip.country} ${trip.location.city} ${trip.estimatedPrice} ${trip.name} ${trip.budget} ${trip.groupType} travel`,
   );
 

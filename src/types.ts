@@ -16,6 +16,7 @@ export type Trip = {
   itinerary?: string;
   bestTimeToVisit?: string;
 };
+
 export type User = {
   name: string;
   email: string;
@@ -23,6 +24,7 @@ export type User = {
   image?: string;
   $createdAt: string;
   accountId: string;
+  $id: string;
 };
 
 export type UserInfo = {

@@ -113,21 +113,32 @@ export default function TripDetail({
             </div>
           </div>
           <div className="flex flex-col gap-y-7">
-            {JSON.parse(itinerary).map((item) => (
-              <div>
-                <p className="text-[20px] font-semibold text-[#2E2C48]">
-                  day {item.day} in {item.location} :
-                </p>
-                <div className="flex flex-col gap-3 pl-6 pt-[6px]">
-                  {item.activities.map((activity) => (
-                    <li className="leading-[35px]">
-                      <span className="font-medium"> {activity.time} : </span>{" "}
-                      {activity.description}
-                    </li>
-                  ))}
+            {JSON.parse(itinerary).map(
+              (item: {
+                day: string;
+                location: string;
+                activities: { time: string; description: string }[];
+              }) => (
+                <div>
+                  <p className="text-[20px] font-semibold text-[#2E2C48]">
+                    day {item.day} in {item.location} :
+                  </p>
+                  <div className="flex flex-col gap-3 pl-6 pt-[6px]">
+                    {item.activities.map(
+                      (activity: { time: string; description: string }) => (
+                        <li className="leading-[35px]">
+                          <span className="font-medium">
+                            {" "}
+                            {activity.time} :{" "}
+                          </span>{" "}
+                          {activity.description}
+                        </li>
+                      ),
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
           <div>
             <p className="mb-3 text-[20px] font-bold text-[#2E2C48]">

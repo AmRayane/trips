@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { fetchUnsplashImage } from "./fetchUnplashImage";
-import { createTrip } from "./apiTrips";
+import { createGemeniTrip } from "./apiTrips";
 import { redirect } from "react-router";
 type createTripGeminiParams = {
   numberOfDays: number;
@@ -86,30 +86,13 @@ export async function createTripGemini({
   try {
     const resutl = await model.generateContent(prompt);
     const text = resutl.response.text();
-    console.log(text);
     trip = JSON.parse(text);
-    console.log(trip);
   } catch (error) {
     console.error("Erreur gemini :", error);
   }
-  const imageUrl: string | null = await fetchUnsplashImage(
+  const imageUrl = await fetchUnsplashImage(
     `${trip.travelStyle} ${trip.country} ${trip.location.city} ${trip.estimatedPrice} ${trip.name} ${trip.budget} ${trip.groupType} travel`,
   );
-
-  await createTrip({
-    name: trip.name,
-    country: trip.country,
-    price: trip.estimatedPrice,
-    numberOfDays: trip.duration,
-    budget: trip.budget,
-    groupeType: trip.groupType,
-    interests: trip.interests,
-    location: trip.location.city,
-    travelStyle: trip.travelStyle,
-    image: imageUrl,
-    description: trip.description,
-    itinerary: JSON.stringify(trip.itinerary),
-    bestTimeToVisit: JSON.stringify(trip.bestTimeToVisit),
-  });
+  await createGemeniTrip({ ...trip, imageUrl: imageUrl });
   redirect(`admin/trips/${trip.$id}`);
 }

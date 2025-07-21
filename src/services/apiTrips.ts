@@ -3,6 +3,7 @@ import {
   MAX_TRIPS_PAGE,
   type PaginatedTripsResponse,
   type Trip,
+  type TripGemini,
 } from "../types";
 import { ID, Query } from "appwrite";
 import {} from "@tanstack/react-query";
@@ -19,7 +20,7 @@ export async function getTrips(page: number): Promise<PaginatedTripsResponse> {
     ],
   );
   return {
-    trips: resopnse.documents as unknown as SimpleTrip[],
+    trips: resopnse.documents as unknown as Trip[],
     total: resopnse.total,
   };
 }
@@ -65,6 +66,29 @@ export async function createTrip(trip: Trip): Promise<void> {
       location: trip.location,
       travelStyle: trip.travelStyle,
       imageUrl: iamgeURL,
+      description: trip.description,
+      itinerary: trip.itinerary,
+      bestTimeToVisit: trip.bestTimeToVisit,
+    },
+  );
+}
+
+export async function createGemeniTrip(trip: TripGemini): Promise<void> {
+  await databases.createDocument(
+    import.meta.env.VITE_APP_DATABASE_ID,
+    import.meta.env.VITE_APP_APPWRITE_TRIPS_ID,
+    ID.unique(),
+    {
+      name: trip.name,
+      country: trip.country,
+      price: parseInt(trip.price.replace("$", "")),
+      numberOfDays: parseInt(trip.numberOfDays),
+      budget: trip.budget,
+      groupType: trip.groupeType,
+      interests: trip.interests,
+      location: trip.location,
+      travelStyle: trip.travelStyle,
+      imageUrl: trip.imageUrl,
       description: trip.description,
       itinerary: trip.itinerary,
       bestTimeToVisit: trip.bestTimeToVisit,

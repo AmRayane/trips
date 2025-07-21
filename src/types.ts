@@ -6,11 +6,28 @@ export type Trip = {
   interests: string;
   budget: string;
   price: string;
-  image: string | FileList;
+  image: FileList;
   location: string;
   groupeType: string;
   description?: string;
   imageUrl: string;
+  $id: string;
+
+  itinerary?: string;
+  bestTimeToVisit?: string;
+};
+export type TripGemini = {
+  country: string;
+  numberOfDays: string;
+  name: string;
+  travelStyle: string;
+  interests: string;
+  budget: string;
+  price: string;
+  location: string;
+  groupeType: string;
+  description?: string;
+  imageUrl: string | null;
   $id: string;
 
   itinerary?: string;

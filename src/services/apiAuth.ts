@@ -125,11 +125,20 @@ export async function signUp(password: string, userData: User) {
       if (exitingUser?.status === "admin") return redirect("/admin/dashboard");
       return redirect("/client");
     }
-  } catch (error: any) {
-    if (error.code === 401) {
-      await account.create(ID.unique(), userData.email, password);
-      await account.createEmailPasswordSession(userData.email, password);
-      await storeUserDataFromForm(userData);
+  } catch (error: unknown) {
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "code" in error &&
+      typeof (error as { code: number }).code === "number"
+    ) {
+      if ((error as { code: number }).code === 401) {
+        await account.create(ID.unique(), userData.email, password);
+        await account.createEmailPasswordSession(userData.email, password);
+        await storeUserDataFromForm(userData);
+      }
+    } else {
+      console.error("Erreur inconnue :", error);
     }
   }
 }

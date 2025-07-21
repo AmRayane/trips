@@ -168,7 +168,7 @@ export default function CreateTrip() {
             disabled={isLoading}
             defaultValue="user"
             className="block w-full min-w-0 grow rounded-lg border-2 py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-            {...register("intersets", { required: true })}
+            {...register("interests", { required: true })}
           >
             <option>Food & Culinary</option>
             <option>Hiking & Nature Walks</option>
@@ -179,7 +179,7 @@ export default function CreateTrip() {
             <option>Shopping</option>
             <option>Local Experiences</option>
           </select>
-          {errors.intersets && (
+          {errors.interests && (
             <p className="rounded-lg bg-[#ff543d4e] p-1 text-[#f13434]">
               interests is required
             </p>

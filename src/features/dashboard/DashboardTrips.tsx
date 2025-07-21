@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import BoxTrip from "../../ui/BoxTrip";
 import { useTrips } from "../tirps/useTrips";
+import type { Trip } from "../../types";
 export default function DashboardTrips() {
   const { data } = useTrips();
-  const trips = data?.trips.slice(0, 4);
-  console.log(trips);
+  const trips: Trip[] | undefined = data?.trips.slice(0, 4);
   return (
     <div>
       <div>

@@ -10,6 +10,8 @@ export type Trip = {
   location: string;
   groupeType: string;
   description?: string;
+  imageUrl: string;
+  $id: string;
 
   itinerary?: string;
   bestTimeToVisit?: string;

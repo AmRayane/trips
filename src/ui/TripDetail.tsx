@@ -11,12 +11,10 @@ type TripDetailProps = {
   numberOfDays: string;
   name: string;
   travelStyle: string;
-  budget: string;
   price: string;
   image: string;
   location: string;
   interests: string;
-  groupType: string;
   description: string;
   bestTimeToVisit: string;
   itinerary: string;

@@ -9,8 +9,8 @@ export async function loginWithGoogle(): Promise<void> {
   try {
     account.createOAuth2Session(
       OAuthProvider.Google,
-      "https://travel-gemeni.netlify.app/auth-callback",
-      "https://travel-gemeni.netlify.app/login",
+      import.meta.env.VITE_REDIRECT_URL,
+      import.meta.env.VITE_REDIRECT_ERROR_URL,
     );
   } catch (error) {
     console.log(error);

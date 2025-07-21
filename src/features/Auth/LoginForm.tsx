@@ -77,29 +77,27 @@ export default function LoginForm() {
               defaultValue={password}
             />
           </div>
-          <div className="flex w-full gap-2 py-3">
-            <button
-              disabled={disabled || isLoading}
-              onClick={(e) => {
-                e.preventDefault();
-                login({ email, password });
-              }}
-              className="flex-1 cursor-pointer rounded-lg bg-dark-100 px-6 py-3 font-bold text-white shadow-md disabled:cursor-not-allowed"
-            >
-              Log in
-            </button>
-            <button
-              onClick={() => {
-                loginWithGoogle();
-              }}
-              disabled={isLoading}
-              className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-bold text-dark-100 shadow-md"
-            >
-              <FaGoogle />
-              Google
-            </button>
-          </div>
         </form>
+        <div className="flex w-full gap-2 py-3">
+          <button
+            disabled={disabled || isLoading}
+            onClick={(e) => {
+              e.preventDefault();
+              login({ email, password });
+            }}
+            className="flex-1 cursor-pointer rounded-lg bg-dark-100 px-6 py-3 font-bold text-white shadow-md disabled:cursor-not-allowed"
+          >
+            Log in
+          </button>
+          <button
+            onClick={loginWithGoogle}
+            disabled={isLoading}
+            className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 font-bold text-dark-100 shadow-md"
+          >
+            <FaGoogle />
+            Google
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -6,10 +6,15 @@ import toast from "react-hot-toast";
 
 //inscrire le visiteur avec sont compte google
 export async function loginWithGoogle(): Promise<void> {
-  account.createOAuth2Session(
-    OAuthProvider.Google,
-    "http://localhost:5173/auth-callback",
-  );
+  try {
+    account.createOAuth2Session(
+      OAuthProvider.Google,
+      "https://travel-gemeni.netlify.app/auth-callback",
+      "http://localhost:5173/login",
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function storeUserDataFromGoogle(userStatus: string) {

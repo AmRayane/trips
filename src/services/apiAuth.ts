@@ -110,6 +110,7 @@ export async function getUser() {
 
 //login function
 export async function login(email: string, password: string): Promise<void> {
+  await account.deleteSession("current");
   await account.createEmailPasswordSession(email, password);
   const user = await account.get();
   if (!user) throw new Error("User not found");

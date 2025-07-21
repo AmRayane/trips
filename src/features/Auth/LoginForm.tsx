@@ -57,7 +57,7 @@ export default function LoginForm() {
           Log in to your account
         </h1>
       </div>
-      <div className="z-10 flex w-[420px] max-w-md flex-col items-center gap-3 rounded-20 bg-white px-6 py-4 shadow-md">
+      <div className="z-10 flex w-[420px] max-w-md flex-col items-center gap-3 divide-y-2 rounded-20 bg-white px-6 py-4 shadow-md">
         <form action="" className="flex w-[100%] flex-col divide-y-2">
           <div className="flex items-center justify-between py-3">
             <label htmlFor="">Email address</label>

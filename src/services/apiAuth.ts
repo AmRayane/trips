@@ -10,7 +10,7 @@ export async function loginWithGoogle(): Promise<void> {
     account.createOAuth2Session(
       OAuthProvider.Google,
       "https://travel-gemeni.netlify.app/auth-callback",
-      "http://localhost:5173/login",
+      "https://travel-gemeni.netlify.app/login",
     );
   } catch (error) {
     console.log(error);

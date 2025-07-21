@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GEMINI_API_KEY } from "./appwrite";
 import { fetchUnsplashImage } from "./fetchUnplashImage";
 import { createTrip } from "./apiTrips";
 import { redirect } from "react-router";
@@ -81,7 +80,7 @@ export async function createTripGemini({
   - Do NOT include markdown, backticks, explanations, or extra text. Return raw JSON only.
   `;
 
-  const genAi = new GoogleGenerativeAI(GEMINI_API_KEY);
+  const genAi = new GoogleGenerativeAI(import.meta.env.VITE_APP_GEMINI_API_KEY);
   const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
   let trip;
   try {

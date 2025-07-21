@@ -1,9 +1,7 @@
-import { UNPLASH_KEY } from "./appwrite";
-
 export async function fetchUnsplashImage(
   query: string,
 ): Promise<string | null> {
-  const endpoint = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape&client_id=${UNPLASH_KEY}`;
+  const endpoint = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=1&orientation=landscape&client_id=${import.meta.env.VITE_APP__UNPLASH_KEY}`;
 
   try {
     const res = await fetch(endpoint);

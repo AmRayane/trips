@@ -3,6 +3,8 @@ import { FaHome, FaMap } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { FaEye } from "react-icons/fa";
+
 import Button from "./Button";
 import Logout from "../features/Auth/Logout";
 
@@ -32,6 +34,10 @@ export default function Menu() {
         <Button link="/admin/trips" action={handleAsideBar} showbar={showBar}>
           <FaMap />
           AI Trips
+        </Button>
+        <Button link="/client" action={handleAsideBar} showbar={showBar}>
+          <FaEye />
+          View Website
         </Button>
         <div>
           <Logout />
